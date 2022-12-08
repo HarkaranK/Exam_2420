@@ -124,3 +124,41 @@ who | awk '{print $1}' >> /etc/motd
 
 9) To run the command type ```sudo ./<filename>```
 
+
+<h2>Part 5</h2>
+
+1) To start editing your service file run the following command
+
+```
+sudo vim /etc/systemd/system/<service file name>.service
+```
+
+Make sure to change the file path in **Service to your own**
+
+```
+[Unit]
+Description=Will run the ./find_users command
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bash ~/exam/find_users
+
+[Install]
+WantedBy=multi-user.target
+```
+
+
+
+
+Part5_ServiceFileContents.png
+
+2) Run the following commands
+
+```
+systemctl reload daemon
+systemctl enable <service file name>
+systemctl start <service file name>
+systemctl status <service file name>
+```
+
+
